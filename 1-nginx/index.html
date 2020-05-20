@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <title>Dockerize Web App</title>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <div class="body-wrap">
+        <div class="banner-area relative container ">
+            <div class="left-container">
+                <h1>1-nginx</h1>
+                <p>Objective: build image and run container based on nginx with content mapped from host hard drive</p>
+                <pre>
+                0. Image command:
+                docker image --help
+
+                1. Build Image:
+                docker image build -t test-nginx . 
+                
+                2. Run container:
+                docker container run --rm -it -p 8081:80 --name test-nginx test-nginx
+
+                3. Run container without COPYing content and using volume mapping instead:
+                docker container run --rm -it -p 8081:80 --name test-nginx -v $PWD:/www/myapp test-nginx
+                </pre>
+            </div>
+            <div class="right-container">
+                <img src="assets/img/ph-big.png" alt="" class="">
+            </div>
+        </div>
+    </div>
+    <div class="grid-wrapper">
+    </div>
+</body>
+
+</html>
