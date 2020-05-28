@@ -5,12 +5,6 @@ Default config
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 date_default_timezone_set('UTC');
-/*redis*/
-$redis = new Redis();
-$connect=$redis->connect("redis", 6379,3);
-if(!$connect){
-    error_log("Could not locate redis server");
-}
 ?>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
@@ -27,8 +21,7 @@ if(!$connect){
     <div class="body-wrap">
         <div class="banner-area relative container ">
             <div class="left-container">
-                <h1>3-REDIS-share-data <?php echo $redis->incr("counter");?></h1>
-                <p>Objective: build image and run container with data saved previously in a custom created volume</p>
+                <p>Objective: build two different services and connect them</p>
                 <pre>
                 0. Build images:
                 docker image build -t test-nginx -f Dockerfile .
