@@ -33,10 +33,11 @@ date_default_timezone_set('UTC');
 
                 2. Network help:
                 docker network --help 
+                docker network create mynet
 
                 3. Run containers with networks:
                 docker container run --rm -it -v $PWD:/www/myapp --name test-php-fpm -p 9000:9000 --net mynet test-php-fpm
-                docker container run --rm -it -v $PWD:/www/myapp --name test-nginx -p 8081:80 --net mynet test-nginx
+                docker container run --rm -it -v $PWD:/www/myapp --name test-nginx -p 8082:80 --net mynet test-nginx
                 </pre>
             </div>
             <div class="right-container">
