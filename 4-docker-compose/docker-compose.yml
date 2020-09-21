@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  redis:
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis_data:/data'
+    networks:
+      - 'mynet'
+  php:
+    build:
+      context: .
+      dockerfile: DockerfilePHP
+    volumes:
+      - '.:/www/myapp'
+    ports:
+      - '9000:9000'
+    networks:
+      - 'mynet'
+  web:
+    build: .
+    depends_on:
+      - 'php'
+    ports:
+      - '8080:80'
+    volumes:
+      - '.:/www/myapp'
+    networks:
+      - 'mynet'
+    
+volumes:
+  redis_data: {}
+
+networks:
+  mynet: {}
+    
